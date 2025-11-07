@@ -1,0 +1,20 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Books
+    // Tailwind CDN
+    script(src="https://cdn.tailwindcss.com")
+  body(class="bg-gray-100 min-h-screen flex flex-col items-center p-6")
+    h1(class="text-3xl font-bold mb-6") Book List
+
+    // Book container
+    div(class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-5xl")
+      each book in books
+        div(class="bg-white p-4 rounded shadow hover:shadow-lg transition")
+          h2(class="text-xl font-semibold mb-2")= book.title
+          p(class="text-gray-600") Author: #{book.author}
+          p(class="text-gray-500 text-sm") Genre: #{book.genre}
+
+    a(href="/logout" class="mt-6 text-blue-500 hover:underline") Logout
