@@ -15,9 +15,17 @@ const User = mongoose.model('User', userSchema);
 
 
 async function register(username, password){
+
+    const user = await User.findOne({ username: username});
+
+    if(user === null){
     const newUser = new User({ username, password });
     await newUser.save();
     console.log('user bien enregistré')
+    }
+    else{
+        return null
+    }
 }
 
 

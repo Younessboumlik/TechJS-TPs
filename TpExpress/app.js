@@ -26,9 +26,12 @@ app.post('/register', async(req, res) => {
     username = req.body.username
     password = req.body.password
     
-    console.log(username)
-    await register(username, password)
-    res.redirect('register')
+    const result = await register(username, password)
+    if (result === null) {
+        res.render('register', { error: 'Username already exists' });
+    } else {
+        res.redirect('login');
+    }
 
 })
 
