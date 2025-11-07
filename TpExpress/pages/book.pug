@@ -12,9 +12,20 @@ html(lang="en")
     // Book container
     div(class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full max-w-5xl")
       each book in books
-        div(class="bg-white p-4 rounded shadow hover:shadow-lg transition")
-          h2(class="text-xl font-semibold mb-2")= book.title
-          p(class="text-gray-600") Author: #{book.author}
-          p(class="text-gray-500 text-sm") Genre: #{book.genre}
+        div(class="bg-white p-4 rounded shadow mb-4 flex justify-between items-center")
+          div
+            h2(class="text-xl font-semibold")= book.title
+            p(class="text-gray-600") Author: #{book.author}
+            p(class="text-gray-500 text-sm") Genre: #{book.genre}
+          form(action=`/book/delete/${book.id}` method="POST")
+            button(type="submit" class="bg-red-500 hover:bg-red-600 text-white p-2 rounded") Delete
+
+    // Add Book Form
+    form(action="/book/add" method="POST" class="mt-8 mb-6 bg-white p-4 rounded shadow-md w-full max-w-2xl")
+      h2(class="text-xl font-semibold mb-2") Add a new Book
+      input(type="text" name="title" placeholder="Title" class="border p-2 w-full mb-2 rounded")
+      input(type="text" name="author" placeholder="Author" class="border p-2 w-full mb-2 rounded")
+      input(type="text" name="genre" placeholder="Genre" class="border p-2 w-full mb-2 rounded")
+      button(type="submit" class="bg-green-500 hover:bg-green-600 text-white p-2 rounded w-full") Add Book
 
     a(href="/logout" class="mt-6 text-blue-500 hover:underline") Logout

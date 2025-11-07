@@ -4,10 +4,12 @@ const {register, login} = require('./passport')
 
 let authentification = false;
 let books=[{
+    id:1,
     title:'book1',
     author:'me',
     genre:'comedy'
 }]
+last_id = 1
 
 const app = express()
 
@@ -51,6 +53,22 @@ app.post('/login', async (req, res) => {
 app.get('/book', authentificationAccess, (req, res) => {
     res.render('book', {books:books})
 })
+
+app.post('/book/add', (req, res) => {
+    const { title, author, genre } = req.body;
+    last_id =  last_id + 1
+    books.push({ id : last_id,title, author, genre });
+    console.log(books)
+    res.redirect('/book');
+});
+
+app.post('/book/delete/:id', (req, res) => {
+    books = books.filter((books) => books.id !== parseInt(req.params.id));
+    console.log(books)
+    res.redirect('/book');
+});
+
+
 
 app.get('/logout', authentificationAccess, (req, res) => {
     authentification = false
