@@ -33,7 +33,7 @@ app.post('/register', async(req, res) => {
 })
 
 app.get('/login', (req, res) => {
-    res.render('login')
+    res.render('login', {error : false})
 })
 
 app.post('/login', async (req, res) => {
@@ -46,7 +46,7 @@ app.post('/login', async (req, res) => {
         res.redirect('book')
     }
     else{
-        res.redirect('login')
+        res.render('login', {error : true})
     }
 })
 

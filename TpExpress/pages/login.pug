@@ -3,13 +3,15 @@ html(lang="en")
   head
     meta(charset="UTF-8")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    title= title
+    title Login
     script(src="https://cdn.tailwindcss.com")
   body(class="bg-gray-100 flex items-center justify-center h-screen")
-    form( action="/login" method="POST" class="bg-white p-8 rounded-lg shadow-md w-80")
-      h1(class="text-2xl font-bold mb-6 text-center text-gray-800") Login
-      input(type="text" name="username" placeholder="Username" class="border border-gray-300 p-2 w-full mb-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500")
-      input(type="password" name="password" placeholder="Password" class="border border-gray-300 p-2 w-full mb-4 rounded focus:outline-none focus:ring-2 focus:ring-blue-500")
+    form(class="bg-white p-8 rounded-lg shadow-md w-80" method="POST" action="/login")
+      h1(class="text-2xl font-bold mb-6 text-center") Login
+      if error
+        p(class="text-red-500 text-sm mb-4") Invalid username or password
+      input(type="text" name="username" placeholder="Username" class="border p-2 w-full mb-4 rounded")
+      input(type="password" name="password" placeholder="Password" class="border p-2 w-full mb-4 rounded")
       button(type="submit" class="bg-blue-500 hover:bg-blue-600 text-white p-2 rounded w-full font-semibold") Login
       p(class="text-center text-gray-500 text-sm mt-4") Don't have an account? 
         a(href="/register" class="text-blue-500 hover:underline") Register
