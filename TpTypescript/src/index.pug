@@ -1,0 +1,37 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Book Reading Tracker
+    script(src="https://cdn.tailwindcss.com")
+  body.bg-gray-100.p-6
+    div.container.mx-auto.max-w-6xl
+      
+      h1.text-3xl.font-bold.mb-6 Book Reading Tracker
+      
+      a.bg-blue-600.text-white.px-4.py-2.rounded.mb-6.inline-block(href="/addbook") Add New Book
+      
+      div.bg-white.p-6.rounded.shadow.mb-6
+        h2.text-2xl.font-bold.mb-4 Statistics
+        p Total Books Read: #{totalBooksRead}
+        p Total Pages Read: #{totalPages}
+      
+      div.bg-white.p-6.rounded.shadow
+        h2.text-2xl.font-bold.mb-4 My Books
+        
+        each book in books
+          div.border.p-4.mb-4.rounded
+            h3.text-xl.font-bold #{book.title}
+            p Author: #{book.author}
+            p Pages: #{book.numberofpagesread} / #{book.numberofpages}
+            - var percentage = Math.round((book.numberofpagesread / book.numberofpages) * 100)
+            p Progress: #{percentage}%
+            p Status: #{book.status}
+            p Format: #{book.format}
+            p Price: $#{book.price}
+            if book.suggestedby
+              p Suggested by: #{book.suggestedby}
+            p Finished: #{book.finished ? 'Yes' : 'No'}
+            
+            a.bg-red-500.text-white.px-4.py-2.rounded.mt-2.inline-block(href=`/delete/${book._id}`) Delete

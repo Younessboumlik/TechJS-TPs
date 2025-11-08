@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add a New Book</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen p-6">
+
+  <h1 class="text-3xl font-bold mb-8">Add a New Book</h1>
+
+  <form action="/add" method="POST" class="bg-white shadow-lg rounded-xl p-6 w-full max-w-md">
+    <div class="mb-4">
+      <label class="block text-gray-700 font-medium" for="title">Title</label>
+      <input type="text" id="title" name="title" required class="w-full border border-gray-300 rounded p-2">
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700 font-medium" for="author">Author</label>
+      <input type="text" id="author" name="author" required class="w-full border border-gray-300 rounded p-2">
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700 font-medium" for="numberOfPages">Number of Pages</label>
+      <input type="number" id="numberOfPages" name="numberOfPages" required min="1" class="w-full border border-gray-300 rounded p-2">
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700 font-medium" for="pagesRead">Pages Read</label>
+      <input type="number" id="pagesRead" name="pagesRead" min="0" class="w-full border border-gray-300 rounded p-2">
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700 font-medium" for="status">Status</label>
+      <select id="status" name="status" class="w-full border border-gray-300 rounded p-2">
+        <option value="Read">Read</option>
+        <option value="Re-read">Re-read</option>
+        <option value="DNF">DNF</option>
+        <option value="Currently reading">Currently reading</option>
+        <option value="Returned Unread">Returned Unread</option>
+        <option value="Want to read">Want to read</option>
+      </select>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700 font-medium" for="format">Format</label>
+      <select id="format" name="format" class="w-full border border-gray-300 rounded p-2">
+        <option value="Print">Print</option>
+        <option value="PDF">PDF</option>
+        <option value="Ebook">Ebook</option>
+        <option value="AudioBook">AudioBook</option>
+      </select>
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700 font-medium" for="price">Price</label>
+      <input type="number" id="price" name="price" step="0.01" min="0" class="w-full border border-gray-300 rounded p-2">
+    </div>
+
+    <div class="mb-4">
+      <label class="block text-gray-700 font-medium" for="suggestedBy">Suggested By</label>
+      <input type="text" id="suggestedBy" name="suggestedBy" class="w-full border border-gray-300 rounded p-2">
+    </div>
+
+    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded transition">
+      Add Book
+    </button>
+  </form>
+
+  <a href="/books" class="mt-6 inline-block text-blue-500 hover:underline">
+    View all books
+  </a>
+
+</body>
+</html>
